@@ -13,26 +13,38 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 const griglia = document.getElementById('griglia');
 console.log(griglia);
 
+let play = document.getElementById('play');
+let selectValue = document.getElementById('mode');
+
+
+
+play.addEventListener('click', function difficulty(){
+
+    for(let i = 0; i < selectValue.value; i++){
+        console.log(selectValue.value);
+    
+        num += 1;
+        let elementoCliccato = createSquare(num);
+    
+        elementoCliccato.addEventListener('click', function(){
+            this.classList.toggle('azure');
+            console.log(this);
+        })
+
+        
+        griglia.append(elementoCliccato);
+    }
+    
+})
+
 let num = 0;
 
-function createSquare(param){
+function createSquare(param){ // setto un parametro generico che mi servirà per inserire un testo nel div.
     const div = document.createElement('div');
     div.classList.add('square');
-    div.innerText = param ;
+    div.innerText = param ; // inserisco il parametro nel testo del div 
     return div;
 }
 
 console.log(createSquare());
 
-for(let i = 0; i < 100; i++){
-    num =  num + 1
-    let elementoCliccato = createSquare(num);
-
-    elementoCliccato.addEventListener('click', function(){
-        this.classList.toggle('azure');
-        console.log(this);
-    })
-    
-    
-    griglia.append(elementoCliccato);
-}
